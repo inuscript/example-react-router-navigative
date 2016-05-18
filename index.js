@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import ready from 'doc-ready'
-import { Router, Route, browserHistory, IndexRoute } from 'react-router'
+import { Router, Route, browserHistory,　hashHistory, IndexRoute } from 'react-router'
 
 const start = () => {
   return (<div>
@@ -12,12 +12,17 @@ const start = () => {
 const Home = () => {
   return <div>Home </div>
 }
+const Hoge = () => {
+  return <div>Hoge </div>
+}
+
 class App extends Component{
   constructor(){
     super()
     this.state = {}
   }
   render(){
+    console.log(this.context)
     return <div>
       <div>hello</div>
       {this.props.children}
@@ -26,10 +31,11 @@ class App extends Component{
 }
 
 const Root = () => (
-  <Router history={browserHistory}>
-    <Route path="/" component={App}>
+  <Router history={hashHistory}>
+    <Route path="/" component={App} >
       <IndexRoute component={Home} />
     </Route>
+    <Route path="/hoge" component={Hoge} />
   </Router>
 )
 
