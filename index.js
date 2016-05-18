@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
+import ready from 'doc-ready'
 const start = () => {
   return (<div>
       <input />
@@ -9,12 +10,15 @@ const start = () => {
 
 class App extends Component{
   constructor(){
-    this.super()
+    super()
     this.state = {}
   }
   render(){
-    
+    return <div>hello</div>
   }
 }
-
-ReactDOM.render('.cnt', <App />)
+ready( () => {
+  let container = document.querySelector('#cnt')
+  console.log(container)
+  ReactDOM.render(<App />, container)
+})
